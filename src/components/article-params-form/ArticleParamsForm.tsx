@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { ArrowButton } from 'components/arrow-button';
 import { Button } from 'components/button';
 
@@ -5,6 +6,7 @@ import { FormEvent, useRef, useState } from 'react';
 
 import styles from './ArticleParamsForm.module.scss';
 import { Select } from '../select';
+import { Text } from '../text';
 import {
 	ArticleStateType,
 	backgroundColors,
@@ -64,14 +66,16 @@ export const ArticleParamsForm = (props: ArticleParamsProps) => {
 			<ArrowButton onClick={toggleOpen} isOpen={isOpen} />
 			<aside
 				ref={rootRef}
-				className={`${styles.container} ${
-					isOpen ? styles.container_open : ''
-				}`}>
+				className={clsx(
+					`${styles.container} ${isOpen ? styles.container_open : ''}`
+				)}>
 				<form
 					className={styles.form}
 					onSubmit={handleFormSubmit}
 					onReset={resetForm}>
-					<h2 className={styles.title}>Задайте параметры</h2>
+					<Text as={'h2'} size={31} weight={800} uppercase={true}>
+						Задайте параметры
+					</Text>
 					<Select
 						title='Шрифт'
 						options={fontFamilyOptions}
